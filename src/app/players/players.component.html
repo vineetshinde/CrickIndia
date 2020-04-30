@@ -1,0 +1,24 @@
+
+<!-- <ul class="list-group" >
+    <li  *ngFor="let player of players" class="list-group-item">{{player.name}}</li>
+  </ul> -->
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sr.No</th>
+        <th scope="col">Player</th>
+        <th *ngIf="this.loginService.isAdmin()" scope="col">Details</th>
+        <th *ngIf="this.loginService.isAdmin()" scope="col">Selection</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players">
+        <td>{{player.id}}</td>
+        <td>{{player.name}}</td>
+        <td *ngIf="this.loginService.isAdmin()" (click)="showDetails(player)"><button type="button" class="btn btn-success">Details</button></td>
+        <td *ngIf="this.loginService.isAdmin()" ><button type="button" class="btn btn-danger" (click)="this.teamService.add(player)">Add To Team</button></td>
+    </tr>
+    </tbody>
+  </table>
+
